@@ -33,6 +33,8 @@ const modal = basicLightbox.create(`
 </div>
 `);
 
+let form_open = false;
+
 const imgFullScreen = (e) => {
   e.preventDefault();
 
@@ -48,6 +50,15 @@ const imgFullScreen = (e) => {
   link.href = e.target.dataset.source;
 
   modal.show();
+  form_open = true;
 };
 
 gallery.addEventListener("click", imgFullScreen);
+
+// close modal with Esc key
+document.addEventListener("keydown", (e) => {
+  if (form_open && e.code === "Escape") {
+    modal.close();
+    console.log("pressed esc key to close modal");
+  }
+});
