@@ -6,18 +6,14 @@ const gallery = document.querySelector(".gallery");
 const galleryItem = galleryItems
   .map(({ preview, original, description }) => {
     return `<li><a class="gallery__item" href="${original}">
-    <img class="gallery__image" src="${preview}" alt="${description}" />
+    <img class="gallery__image" src="${preview}" alt="${description}"  />
   </a></li>`;
   })
   .join("");
 
 gallery.insertAdjacentHTML("afterbegin", galleryItem);
 
-let galleryI = new SimpleLightbox(".gallery__item");
-galleryI.on("show.simplelightbox", function () {
-  console.log("ffff");
+new SimpleLightbox("a.gallery__item", {
+  captionDelay: "250",
+  captionsData: "alt",
 });
-
-// gallery.on("error.simplelightbox", function (e) {
-
-// });
